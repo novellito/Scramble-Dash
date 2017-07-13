@@ -7,13 +7,20 @@ import Submit from './Submit.js'; //<Submit></Submit>
 
 //The container component will hold all of other components 
 class Container extends Component {
+
+  
+
+  updateScore = (score) =>{
+  console.log(score);
+}
+
   render() {
     return (
       <div>
       <h1>container here</h1>
       <Categories></Categories>
       <PlayInfo></PlayInfo>
-      <Play></Play>
+      <Play cbToScore = {this.updateScore}></Play>
         
       </div>
     );

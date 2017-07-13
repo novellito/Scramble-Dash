@@ -8,9 +8,16 @@ import Submit from './Submit.js'; //<Submit></Submit>
 //The container component will hold all of other components 
 class Container extends Component {
 
-  
+  constructor(props){
+    super(props);
+
+    this.state = {
+      score:0
+    }
+  }
 
   updateScore = (score) =>{
+    this.setState({score: this.state.score +  1})
   console.log(score);
 }
 
@@ -19,7 +26,7 @@ class Container extends Component {
       <div>
       <h1>container here</h1>
       <Categories></Categories>
-      <PlayInfo></PlayInfo>
+      <PlayInfo secondsRemaining="10" currScore = {this.state.score} ></PlayInfo>
       <Play cbToScore = {this.updateScore}></Play>
         
       </div>

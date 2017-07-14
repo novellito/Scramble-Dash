@@ -12,7 +12,9 @@ class Container extends Component {
     super(props);
 
     this.state = {
-      score:0
+      score:0,
+      category:['basketball', 'football', 'soccer', 'potatoe'],
+      tick:false
     }
   }
 
@@ -21,13 +23,28 @@ class Container extends Component {
   console.log(score);
 }
 
+updateCat = (category) =>{
+  this.setState({category:category}, ()=>{
+
+  console.log(this.state.category);
+  });
+}
+
+doTick = ()=>{
+  this.setState({tick:true},()=>{
+  console.log(this.state.tick);
+  });
+}
+
   render() {
     return (
       <div>
       <h1>container here</h1>
-      <Categories></Categories>
-      <PlayInfo secondsRemaining="10" currScore = {this.state.score} ></PlayInfo>
-      <Play cbToScore = {this.updateScore}></Play>
+      <Categories currCat = {this.updateCat}></Categories>
+      <PlayInfo secondsRemaining="10" currScore = {this.state.score} countdown={this.state.tick}
+      
+      ></PlayInfo>
+      <Play cbToScore = {this.updateScore} currList={this.state.category} startTime={this.doTick}></Play>
         
       </div>
     );

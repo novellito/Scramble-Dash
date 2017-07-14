@@ -10,7 +10,6 @@ class Play extends Component {
 
     this.state = {
       score: 1,
-      word: ['basketball', 'football', 'soccer', 'potatoe'], //temporary list for now...
       index:0
     };
   }
@@ -29,7 +28,7 @@ class Play extends Component {
 
   compareWords = (event) => {
 
-    if (event.target.value == this.state.word[this.state.index]) {
+    if (event.target.value == this.props.currList[this.state.index]) {
 
       this
         .props
@@ -49,11 +48,11 @@ class Play extends Component {
     return (
       <div>
 
-        <p>{this.shuffleWords(this.state.word[this.state.index])}</p>
+        <p>{this.shuffleWords(this.props.currList[this.state.index])}</p>
         <input ref="input" type="text" onChange={this.compareWords}/>
 
         <div>
-          <button className="button">
+          <button onClick={this.props.startTime} className="button">
             <i className="fa fa-play" aria-hidden="true"></i>
           </button>
           <button className="button btn-replay">

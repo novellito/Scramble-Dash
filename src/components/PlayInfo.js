@@ -6,8 +6,9 @@ class PlayInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      secondsRemaining: 0
+      secondsRemaining:this.props.secondsRemaining
     }
+    
   }
 
   tick = () => {
@@ -18,17 +19,34 @@ class PlayInfo extends Component {
       clearInterval(this.interval);
     }
   }
+
   componentDidMount = () => {
     this.setState({secondsRemaining: this.props.secondsRemaining});
-    this.interval = setInterval(this.tick, 1000);
+    console.log(this.state.secondsRemaining);
+    // if(this.props.tick == true){
+    // this.interval = setInterval(this.tick, 1000);
+
+    // }
   }
+
+  callTick= function() {
+    // this.interval = setInterval(this.tick, 1000);
+    clearInterval(this.interval);
+    
+    if(this.props.countdown == true){
+    this.interval = setInterval(this.tick, 1000);
+
+    }
+    
+  }
+  
   componentWillUnmount = () => {
     clearInterval(this.interval);
   }
   render() {
     return (
-      <div className="outer">
-
+      <div  className="outer">
+      {this.callTick()}
         <i className="fa fa-hourglass-start fa-1x" aria-hidden="true"></i>
         <p className="info">{this.state.secondsRemaining}</p>
         <i className="fa fa-star fa-1x" aria-hidden="true"></i>

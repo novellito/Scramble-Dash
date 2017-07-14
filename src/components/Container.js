@@ -3,7 +3,7 @@ import '../component-styles/index.css';
 import Play from './Play.js';
 import PlayInfo from './PlayInfo.js'
 import Categories from './Categories.js';
-import Submit from './Submit.js'; //<Submit></Submit>
+import Submit from './Submit.js'; 
 
 //The container component will hold all of other components
 class Container extends Component {
@@ -18,25 +18,36 @@ class Container extends Component {
       ],
       tick: false,
       sec: 5,
-      gameState: true
+      gameState: true, //lock input
     }
   }
 
   updateScore = (score) => {
+
+    // console.log(this.state.gameState);
+
+    if(this.state.gameState == false){
+
     this.setState({
       score: this.state.score + 1
-    })
-    console.log(score);
+    });
+
+    }
+       else if(this.state.gameState == true && score == 0){ //reset points after game ends 
+      this.setState({score:0});
+    }
+    
+    // console.log(score);
   }
 
   updateCat = (category) => {
     this.setState({
       category: category
     }, () => {
-      this.setState({gameState: false});
+      // this.setState({gameState: false});
       this.setState({tick: false});
-
-      console.log(this.state.category);
+      this.setState({score:0});
+      // console.log(this.state.category);
       this.state.sec = 5;
     });
 
@@ -44,7 +55,7 @@ class Container extends Component {
 
   checkState = (theState) => {
     this.setState({gameState: theState});
-    console.log(this.state.gameState);
+    // console.log(this.state.gameState);
   }
 
   doTick = () => {
@@ -54,6 +65,7 @@ class Container extends Component {
     , () => {
       // console.log(this.state.tick);
       this.setState({gameState:false});
+
     });
   }
 
@@ -61,21 +73,24 @@ class Container extends Component {
     return (
       <div>
         <h1>container here</h1>
-        <Categories currCat={this.updateCat}></Categories>
+        <Categories currCat={this.updateCat} gameState={!this.state.gameState}></Categories>
         <PlayInfo
+          pointCounter={this.updateScore}
           secondsRemaining={this.state.sec}
           currScore={this.state.score}
           countdown={this.state.tick}
           gameState={this.checkState}></PlayInfo>
         <Play
           gameState={this.state.gameState}
-          currState={this.state.gameState}
           cbToScore={this.updateScore}
           currList={this.state.category}
-          startTime={this.doTick}></Play>
-
+          startTime={this.doTick}
+         >
+          </Play>
+      {this.state.gameState ? '': <Submit/>}
       </div>
     );
+
   }
 }
 

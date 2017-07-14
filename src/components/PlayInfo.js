@@ -18,6 +18,7 @@ class PlayInfo extends Component {
     if (this.state.secondsRemaining <= 0) {
       this.props.gameState(true);
       this.state.secondsRemaining = 5;
+      this.props.pointCounter(0);
 //      this.state.secondsRemaining = 5;
       
       clearInterval(this.interval);

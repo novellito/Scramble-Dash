@@ -31,7 +31,7 @@ class Categories extends Component {
   render() {
     return (
       <div>
-  <select value={this.state.value}  onChange={this.onCatChange} className="categories">
+  <select value={this.state.value}  onChange={this.onCatChange} className="categories" disabled={this.props.gameState}>
     <option value='sports'>Sports</option>
      <option value='music'>Music</option>
      <option value='videogames'>Video Games</option>

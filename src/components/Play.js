@@ -15,6 +15,11 @@ class Play extends Component {
     };
   }
 
+  //   componentDidMount(){
+  //   this.refs.input.focus();
+    
+  // }
+
   shuffleWords = (word) => {
     let shuffledWord = '';
     let charIndex = 0;
@@ -35,25 +40,40 @@ class Play extends Component {
         .props
         .cbToScore(this.state.score++);
      this.state.index++;
-      console.log('index is '+  this.state.index);
       //short delay before switching word
       setTimeout(() => {
         this.refs.input.value = '';
-      }, 500);
+      }, 200);
     }
+
+   
+  }
+
+  onClick = (event)=>{
+
+    this.props.startTime();
+    
+     //let game state change then focus on input
+     setTimeout(() => {
+       this.refs.input.focus();
+      }, 200);
 
   }
 
   render() {
 
+     if(this.props.gameState == true){
+      this.state.index = 0;
+    }
+
     return (
       <div>
 
-        <p>{this.shuffleWords(this.props.currList[this.state.index])}</p>
+        <p>{this.props.gameState ? true: this.shuffleWords(this.props.currList[this.state.index])}</p>
         <input ref="input" type="text" onChange={this.compareWords} disabled={this.props.gameState}/>
 
         <div>
-          <button onClick={this.props.startTime} className="button">
+          <button onClick={this.onClick} disabled={!this.props.gameState} className="button">
             <i className="fa fa-play" aria-hidden="true"></i>
           </button>
           <button className="button btn-replay">

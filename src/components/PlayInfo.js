@@ -16,6 +16,10 @@ class PlayInfo extends Component {
       secondsRemaining: this.state.secondsRemaining - 1
     });
     if (this.state.secondsRemaining <= 0) {
+      this.props.gameState(true);
+      this.state.secondsRemaining = 5;
+//      this.state.secondsRemaining = 5;
+      
       clearInterval(this.interval);
     }
   }
@@ -23,10 +27,6 @@ class PlayInfo extends Component {
   componentDidMount = () => {
     this.setState({secondsRemaining: this.props.secondsRemaining});
     console.log(this.state.secondsRemaining);
-    // if(this.props.tick == true){
-    // this.interval = setInterval(this.tick, 1000);
-
-    // }
   }
 
   callTick= function() {
@@ -35,7 +35,8 @@ class PlayInfo extends Component {
     
     if(this.props.countdown == true){
     this.interval = setInterval(this.tick, 1000);
-
+    // console.log(this.props.countdown)
+      // this.props.countdown = 'false';
     }
     
   }

@@ -10,7 +10,8 @@ class Play extends Component {
 
     this.state = {
       score: 1,
-      index:0
+      index:0,
+      gameOn:true
     };
   }
 
@@ -49,7 +50,7 @@ class Play extends Component {
       <div>
 
         <p>{this.shuffleWords(this.props.currList[this.state.index])}</p>
-        <input ref="input" type="text" onChange={this.compareWords}/>
+        <input ref="input" type="text" onChange={this.compareWords} disabled={this.props.gameState}/>
 
         <div>
           <button onClick={this.props.startTime} className="button">

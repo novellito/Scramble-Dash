@@ -3,7 +3,7 @@ import '../component-styles/index.css';
 import Play from './Play.js';
 import PlayInfo from './PlayInfo.js'
 import Categories from './Categories.js';
-import Submit from './Submit.js'; 
+import Submit from './Submit.js';
 
 //The container component will hold all of other components
 class Container extends Component {
@@ -19,61 +19,65 @@ class Container extends Component {
       tick: false,
       sec: 5,
       gameState: true, //lock input
-      reset:false
+      reset: false
     }
   }
 
   updateScore = (score) => {
 
-    if(this.state.gameState == false){
+    if (this.state.gameState == false) {
 
-    this.setState({
-      score: this.state.score + 1
-    });
-
+      this.setState({
+        score: this.state.score + 1
+      });
     }
-    //   else if(this.state.gameState == true && score == 0){ //reset points after game ends 
-    //   this.setState({score:0});
-    // }
-    
   }
 
   updateCat = (category) => {
     this.setState({
-      category: category
-    }, () => {
-      this.setState({tick: false});
-      this.setState({score:0});
-      // this.state.sec = 5;
+      category: category,
+      tick:false,
+      score:0
     });
-
   }
+
+  // updateCat = (category) => {
+  //   this.setState({
+  //     category: category,
+  //   }, () => {
+  //     this.setState({tick: false});
+  //     this.setState({score: 0});
+  //     // this.state.sec = 5;
+  //   });
+
+  // }
 
   checkState = (theState) => {
     this.setState({gameState: theState});
+    this.state.gameState = theState;
   }
 
+  //sets the tick & game state to notify PlayInfo to start timing
   doTick = () => {
-    this.setState({
-      tick: true
-    }
-    , () => {
-      this.setState({gameState:false});
-
-    });
+    this.setState({tick: true, gameState: false});
   }
 
-  resetToggle = () =>{
-    this.setState({reset:true}); //will make play button unclickable unless reset button is clicked
+  resetToggle = () => {
+    this.setState({reset: true}); //will make play button unclickable unless reset button is clicked
   }
 
-  gameReset= () =>{
+  gameReset = () => {
     //tell info component to reset time
-    this.setState({score:0},()=>{
-    this.setState({reset:false});
+    this.setState({
+      score: 0,
+      reset: false,
+      gameState: true,
+      tick:false
+    }, () => {
 
-    //make ajax call to backend here?
+      //make ajax call to backend here?
     });
+
   }
 
   render() {
@@ -87,8 +91,7 @@ class Container extends Component {
           currScore={this.state.score}
           countdown={this.state.tick}
           gameState={this.checkState}
-          reset={this.state.reset}
-          ></PlayInfo>
+          reset={this.state.reset}></PlayInfo>
         <Play
           gameState={this.state.gameState}
           cbToScore={this.updateScore}
@@ -96,10 +99,10 @@ class Container extends Component {
           startTime={this.doTick}
           resetToggle={this.resetToggle}
           resetState={this.state.reset}
-          resetGame={this.gameReset}
-         >
-          </Play>
-       {this.state.gameState && this.state.score > 0 ? <Submit/>: '' } 
+          resetGame={this.gameReset}></Play>
+        {this.state.gameState && this.state.score > 0
+          ? <Submit/>
+          : ''}
       </div>
     );
 

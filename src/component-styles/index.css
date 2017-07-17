@@ -68,3 +68,16 @@ input[type=text]:focus {
 .btn-replay:hover {
     background-color: #f56a60;
 }
+
+.submitInfo{
+    margin-top: 20px;
+}
+
+.submitInfo h2{
+   display: inline-block;
+   margin-right: 5px;
+}
+
+.theWord{
+    font-size:20px;
+}

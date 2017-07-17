@@ -5,8 +5,8 @@ import '../component-styles/submit.css';
 class Submit extends Component {
   render() {
     return (
-      <div>
-      Name:
+      <div className="submitInfo">
+     <h2>Name:</h2>
   <input type="text"/>
 <button className="button"><i className="fa fa-plus" aria-hidden="true"></i></button>
 

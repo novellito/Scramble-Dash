@@ -52,7 +52,7 @@ class Play extends Component {
   onClick = (event)=>{
 
     this.props.startTime();
-    
+    this.props.resetToggle(); 
      //let game state change then focus on input
      setTimeout(() => {
        this.refs.input.focus();
@@ -73,10 +73,10 @@ class Play extends Component {
         <input ref="input" type="text" onChange={this.compareWords} disabled={this.props.gameState}/>
 
         <div>
-          <button onClick={this.onClick} disabled={!this.props.gameState} className="button">
+          <button onClick={this.onClick} disabled={this.props.resetState} className="button">
             <i className="fa fa-play" aria-hidden="true"></i>
           </button>
-          <button className="button btn-replay">
+          <button onClick={this.props.resetGame} className="button btn-replay">
             <i className="fa fa-repeat" aria-hidden="true"></i>
           </button>
         </div>

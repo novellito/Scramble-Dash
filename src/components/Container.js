@@ -19,6 +19,7 @@ class Container extends Component {
       tick: false,
       sec: 5,
       gameState: true, //lock input
+      reset:false
     }
   }
 
@@ -63,9 +64,20 @@ class Container extends Component {
       tick: true
     }
     , () => {
-      // console.log(this.state.tick);
       this.setState({gameState:false});
 
+    });
+  }
+
+  resetToggle = () =>{
+    this.setState({reset:true}); //will make play button unclickable unless reset button is clicked
+  }
+
+  gameReset= () =>{
+    //tell info component to reset details
+    this.setState({score:0},()=>{
+    this.setState({reset:false});
+    // this.setState({sec:10});
     });
   }
 
@@ -79,15 +91,20 @@ class Container extends Component {
           secondsRemaining={this.state.sec}
           currScore={this.state.score}
           countdown={this.state.tick}
-          gameState={this.checkState}></PlayInfo>
+          gameState={this.checkState}
+          reset={this.state.reset}
+          ></PlayInfo>
         <Play
           gameState={this.state.gameState}
           cbToScore={this.updateScore}
           currList={this.state.category}
           startTime={this.doTick}
+          resetToggle={this.resetToggle}
+          resetState={this.state.reset}
+          resetGame={this.gameReset}
          >
           </Play>
-      {this.state.gameState ? '': <Submit/>}
+      {/* {this.state.gameState ? '': <Submit/>} */}
       </div>
     );
 

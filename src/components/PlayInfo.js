@@ -25,39 +25,33 @@ class PlayInfo extends Component {
     });
 
     if (this.state.secondsRemaining <= 0) {
-
-      this
+       this
         .props
         .gameState(true); //lock the input field
-
-      if (this.props.reset == false) {
-        this.setState({secondsRemaining: 5});
-      }
-
-      clearInterval(this.interval);
+      clearInterval(this.interval); //stop timer once it reaches 0
     }
-  }
 
-  // componentDidMount = () => {
-  //   this.setState({secondsRemaining: this.props.secondsRemaining});
-  //   console.log(this.state.secondsRemaining);
-  // }
+  }
 
   callTick = function () {
     clearInterval(this.interval);
-
+    
     if (this.props.countdown == true) {
-      
       this.interval = setInterval(this.tick, 1000);
-
     }
 
   }
 
-  componentWillUnmount = () => {
-    clearInterval(this.interval);
-  }
+  // componentWillUnmount = () => {
+  //   clearInterval(this.interval);
+  // }
   render() {
+
+    if (this.state.secondsRemaining <= 0 && this.props.reset == false) { //reset the time
+      this.setState({secondsRemaining: 5});
+      clearInterval(this.interval);
+    }
+
     return (
       <div className="outer">
         {this.callTick()}
@@ -65,7 +59,6 @@ class PlayInfo extends Component {
         <p className="info">{this.state.secondsRemaining}</p>
         <i className="fa fa-star fa-1x" aria-hidden="true"></i>
         <p className="info">{this.props.currScore}</p>
-
       </div>
     );
   }

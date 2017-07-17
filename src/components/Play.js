@@ -15,11 +15,6 @@ class Play extends Component {
     };
   }
 
-  //   componentDidMount(){
-  //   this.refs.input.focus();
-    
-  // }
-
   shuffleWords = (word) => {
     let shuffledWord = '';
     let charIndex = 0;
@@ -53,6 +48,7 @@ class Play extends Component {
 
     this.props.startTime();
     this.props.resetToggle(); 
+    this.refs.input.value = '';
      //let game state change then focus on input
      setTimeout(() => {
        this.refs.input.focus();

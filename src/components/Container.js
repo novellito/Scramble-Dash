@@ -25,8 +25,6 @@ class Container extends Component {
 
   updateScore = (score) => {
 
-    // console.log(this.state.gameState);
-
     if(this.state.gameState == false){
 
     this.setState({
@@ -34,29 +32,25 @@ class Container extends Component {
     });
 
     }
-       else if(this.state.gameState == true && score == 0){ //reset points after game ends 
-      this.setState({score:0});
-    }
+    //   else if(this.state.gameState == true && score == 0){ //reset points after game ends 
+    //   this.setState({score:0});
+    // }
     
-    // console.log(score);
   }
 
   updateCat = (category) => {
     this.setState({
       category: category
     }, () => {
-      // this.setState({gameState: false});
       this.setState({tick: false});
       this.setState({score:0});
-      // console.log(this.state.category);
-      this.state.sec = 5;
+      // this.state.sec = 5;
     });
 
   }
 
   checkState = (theState) => {
     this.setState({gameState: theState});
-    // console.log(this.state.gameState);
   }
 
   doTick = () => {
@@ -74,10 +68,11 @@ class Container extends Component {
   }
 
   gameReset= () =>{
-    //tell info component to reset details
+    //tell info component to reset time
     this.setState({score:0},()=>{
     this.setState({reset:false});
-    // this.setState({sec:10});
+
+    //make ajax call to backend here?
     });
   }
 
@@ -104,7 +99,7 @@ class Container extends Component {
           resetGame={this.gameReset}
          >
           </Play>
-      {/* {this.state.gameState ? '': <Submit/>} */}
+       {this.state.gameState && this.state.score > 0 ? <Submit/>: '' } 
       </div>
     );
 

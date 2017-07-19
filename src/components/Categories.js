@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 //This component contains the various categories a player can choose
 class Categories extends Component {
@@ -8,8 +9,7 @@ class Categories extends Component {
 
     this.state = {
       value: 'sports',
-      sports:  ['basketball', 'football', 'soccer', 'potatoe'],
-      music: ['hiphop', 'rap', 'rock']
+      content:[]
     };
 
   }
@@ -19,11 +19,20 @@ class Categories extends Component {
     
     this.setState({value: event.target.value},function(){
 
-      //send the selected choices values here and pass to container component
-      let valueToSend = this.state.value;
+    axios.get(`/categories/${this.state.value}`) //make request to backend
+      .then(res => {
+        console.log(res.data);
+        this.setState({content: res.data},()=>{
+
+        // this.props.choice(valueToSend);
+
         this
         .props
-        .currCat(this.state[valueToSend]);
+        .currCat({name:this.state.value,
+          content:this.state.content});
+        });
+
+      });
     });
 
 

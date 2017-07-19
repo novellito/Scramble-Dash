@@ -4,6 +4,7 @@ import Play from './Play.js';
 import PlayInfo from './PlayInfo.js'
 import Categories from './Categories.js';
 import Submit from './Submit.js';
+import axios from 'axios';
 
 //The container component will hold all of other components
 class Container extends Component {
@@ -13,15 +14,22 @@ class Container extends Component {
 
     this.state = {
       score: 0,
-      category: [
-        'basketball', 'football', 'soccer', 'potatoe'
-      ],
+      category:'sports',
+      wordList: [],
       tick: false,
       sec: 5,
       gameState: true, //lock input
       reset: false
     }
   }
+    componentDidMount() {
+    axios.get('/categories/sports')
+      .then(res => {
+        console.log(res.data);
+        this.setState({wordList: res.data});
+      });
+  }
+
 
   updateScore = (score) => {
 
@@ -33,17 +41,19 @@ class Container extends Component {
     }
   }
 
-  updateCat = (category) => {
+  updateCat = (wordList) => {
+    // console.log(wordList);
     this.setState({
-      category: category,
+      wordList: wordList.content,
+      category:wordList.name,
       tick:false,
       score:0
     });
   }
 
-  // updateCat = (category) => {
+  // updateCat = (wordList) => {
   //   this.setState({
-  //     category: category,
+  //     wordList: wordList,
   //   }, () => {
   //     this.setState({tick: false});
   //     this.setState({score: 0});
@@ -75,16 +85,27 @@ class Container extends Component {
       tick:false
     }, () => {
 
+    axios.get(`/categories/${this.state.category}`)
+      .then(res => {
+        console.log(res.data);
+        this.setState({wordList: res.data});
+      });
       //make ajax call to backend here?
     });
 
   }
 
+  setCat = (category) =>{
+    this.setState({category:category});
+  }
+
   render() {
     return (
       <div>
-        <h1>container here</h1>
-        <Categories currCat={this.updateCat} gameState={!this.state.gameState}></Categories>
+        <h1>Scramble - Dash</h1>
+        <Categories currCat={this.updateCat} 
+        gameState={!this.state.gameState}
+        choice={this.setCat}></Categories>
         <PlayInfo
           pointCounter={this.updateScore}
           secondsRemaining={this.state.sec}
@@ -95,7 +116,7 @@ class Container extends Component {
         <Play
           gameState={this.state.gameState}
           cbToScore={this.updateScore}
-          currList={this.state.category}
+          currList={this.state.wordList}
           startTime={this.doTick}
           resetToggle={this.resetToggle}
           resetState={this.state.reset}

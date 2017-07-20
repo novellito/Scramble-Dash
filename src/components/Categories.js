@@ -25,7 +25,7 @@ class Categories extends Component {
         this.setState({content: res.data},()=>{
 
         // this.props.choice(valueToSend);
-
+        // console.log(this.state.value);
         this
         .props
         .currCat({name:this.state.value,

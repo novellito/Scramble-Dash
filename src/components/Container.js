@@ -42,7 +42,7 @@ class Container extends Component {
   }
 
   updateCat = (wordList) => {
-    // console.log(wordList);
+    // console.log(this.state.category);
     this.setState({
       wordList: wordList.content,
       category:wordList.name,
@@ -122,7 +122,7 @@ class Container extends Component {
           resetState={this.state.reset}
           resetGame={this.gameReset}></Play>
         {this.state.gameState && this.state.score > 0
-          ? <Submit/>
+          ? <Submit user={{score:this.state.score, category:this.state.category}}></Submit>
           : ''}
       </div>
     );

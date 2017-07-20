@@ -5,13 +5,10 @@ class Play extends Component {
 
   constructor(props) {
 
-    let index = 0;
     super(props);
-
     this.state = {
       score: 1,
-      index: 0,
-      gameOn: true
+      index: 0
     };
   }
 
@@ -29,7 +26,7 @@ class Play extends Component {
 
   compareWords = (event) => {
 
-    if (event.target.value == this.props.currList[this.state.index]) {
+    if (event.target.value === this.props.currList[this.state.index]) {
 
       this
         .props
@@ -69,10 +66,6 @@ class Play extends Component {
 
   render() {
 
-    if (this.props.gameState == true) {
-      this.state.index = 0;
-    }
-
     return (
       <div>
         <p className="theWord">{this.props.gameState
@@ -88,7 +81,7 @@ class Play extends Component {
           <button
             onClick={this.onClick}
             disabled={this.props.resetState}
-            className="button">
+            className={!this.props.resetState ? 'button btn-hov' : 'button btn-disabled'}>
             <i className="fa fa-play" aria-hidden="true"></i>
           </button>
           <button onClick={this.props.resetGame} className="button btn-replay">

@@ -25,16 +25,13 @@ class Container extends Component {
     componentDidMount() {
     axios.get('/categories/sports')
       .then(res => {
-        console.log(res.data);
         this.setState({wordList: res.data});
       });
   }
 
-
   updateScore = (score) => {
 
-    if (this.state.gameState == false) {
-
+    if (!this.state.gameState) {
       this.setState({
         score: this.state.score + 1
       });
@@ -42,7 +39,6 @@ class Container extends Component {
   }
 
   updateCat = (wordList) => {
-    // console.log(this.state.category);
     this.setState({
       wordList: wordList.content,
       category:wordList.name,
@@ -51,20 +47,9 @@ class Container extends Component {
     });
   }
 
-  // updateCat = (wordList) => {
-  //   this.setState({
-  //     wordList: wordList,
-  //   }, () => {
-  //     this.setState({tick: false});
-  //     this.setState({score: 0});
-  //     // this.state.sec = 5;
-  //   });
-
-  // }
-
   checkState = (theState) => {
     this.setState({gameState: theState});
-    this.state.gameState = theState;
+    // this.state.gameState = theState;
   }
 
   //sets the tick & game state to notify PlayInfo to start timing
@@ -87,10 +72,8 @@ class Container extends Component {
 
     axios.get(`/categories/${this.state.category}`)
       .then(res => {
-        console.log(res.data);
         this.setState({wordList: res.data});
       });
-      //make ajax call to backend here?
     });
 
   }
@@ -126,7 +109,6 @@ class Container extends Component {
           : ''}
       </div>
     );
-
   }
 }
 

@@ -17,7 +17,7 @@ submitScore = () => {
     user: this.refs.input.value,
     score: this.props.user.score,
     category:this.props.user.category
-  }) .then(function (response) {
+  }).then(function (response) {
     console.log(response);
   })
   // console.log(this.refs.input.value);
@@ -31,7 +31,7 @@ submitScore = () => {
       <div className="submitInfo">
      <h2>Name:</h2>
   <input ref="input" type="text" required/>
-<Link onClick={this.submitScore} className="button" to="/scoreboard"><i className="fa fa-plus" aria-hidden="true"></i></Link>
+<Link onClick={this.submitScore} className="button btn-hov" to="/scoreboard"><i className="fa fa-plus" aria-hidden="true"></i></Link>
 
       </div>
     );

@@ -9,7 +9,7 @@ class Scoreboard extends Component {
 
         this.state = {
             scoreList: [],
-            currList:'all'
+            currList: 'all'
         }
 
     }
@@ -18,32 +18,22 @@ class Scoreboard extends Component {
         axios
             .get('/scores/scoreList/all')
             .then(res => {
-                // console.log(res.data);
-                this.setState({
-                    scoreList: res.data
-                }, () => {
-                    // console.log(this.state.scoreList);
-                });
-                // console.log(JSON.stringify(res.data));
+                this.setState({scoreList: res.data});
             });
     }
 
+    updateCat = (event) => {
+        this.setState({
+            currList: event.target.value
+        }, () => {
 
-      updateCat= (event)=> {
-        this.setState({currList:event.target.value}, ()=>{
-
-              axios
-            .get(`/scores/scoreList/${this.state.currList}`)
-            .then(res => {
-                console.log(res.data);
-                this.setState({
-                    scoreList: res.data
+            axios
+                .get(`/scores/scoreList/${this.state.currList}`)
+                .then(res => {
+                    this.setState({scoreList: res.data});
                 });
-            });
-
         });
-          
-      
+
     }
 
     getPlace = (n) => {
@@ -55,16 +45,21 @@ class Scoreboard extends Component {
     }
 
     changeCat = (event) => {
-        this.setState({currList:event.target.value});
+        this.setState({currList: event.target.value});
     }
 
     render() {
-        
+
         return (
             <div>
                 <h1>Scoreboard</h1>
-                <span> Filter By </span>
-                <select value={this.state.currList} onChange={this.updateCat} className="categories">
+                <span style={{marginRight: '10px'}}>
+                    Filter By
+                </span>
+                <select
+                    value={this.state.currList}
+                    onChange={this.updateCat}
+                    className="categories">
                     <option value='all'>All</option>
                     <option value='sports'>Sports</option>
                     <option value='music'>Music</option>
@@ -75,19 +70,13 @@ class Scoreboard extends Component {
                         <tr>
                             <th>Place</th>
                             <th>Name</th>
-
-                            {
-                                this.state.currList == 'all' &&
-                                  <th>Category</th>
-                            }
+                            {this.state.currList === 'all' && <th>Category</th>}
                             <th>Score</th>
                         </tr>
                         {this
                             .state
                             .scoreList
                             .map((val, index) => {
-                                console.log(val);
-                                console.log(index + 1);
                                 this.getPlace(index + 1);
                                 return (
                                     <tr key={val.id}>
@@ -97,12 +86,10 @@ class Scoreboard extends Component {
                                         <td>
                                             {val.name}
                                         </td>
-                                    {
-                                         this.state.currList == 'all' &&
-                                        <td>
+                                        {this.state.currList === 'all' && <td>
                                             {val.category}
                                         </td>
-                                    }
+                                        }
                                         <td>
                                             {val.score}
                                         </td>

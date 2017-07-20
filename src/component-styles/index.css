@@ -1,12 +1,14 @@
-html, body {
+html,
+body {
     max-width: 100%;
     overflow-x: hidden;
+    font-family: 'Open Sans', sans-serif;
 }
+
 .categories {
     margin-bottom: 35px;
     height: 25px;
     border-radius: 10px;
-     /* padding-left: 15px;  */
     outline: none;
 }
 
@@ -15,13 +17,14 @@ html, body {
 }
 
 .info {
+    background: #ffbd59;
     position: relative;
     display: inline-block;
-    border: 2px solid red;
+    border-radius: 2px;
     margin: 2px;
     width: 100px;
-    /* height: 100px; */
     font-size: 3.5em;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
 .fa-hourglass-start,
@@ -50,7 +53,6 @@ input[type=text]:focus {
 
 .button {
     background-color: #4CAF50;
-    /* Green */
     border: none;
     color: white;
     padding: 14px 30px;
@@ -61,8 +63,13 @@ input[type=text]:focus {
     border-radius: 8px;
 }
 
-.button:hover {
+.btn-hov:hover {
     background-color: rgb(109, 204, 112);
+}
+
+.btn-disabled {
+    background-color: rgb(154, 201, 156);
+    cursor: not-allowed;
 }
 
 .btn-replay {
@@ -73,17 +80,18 @@ input[type=text]:focus {
     background-color: #f56a60;
 }
 
-.submitInfo{
+.submitInfo {
     margin-top: 20px;
 }
 
-.submitInfo h2{
-   display: inline-block;
-   margin-right: 5px;
+.submitInfo h2 {
+    display: inline-block;
+    margin-right: 5px;
 }
 
-.theWord{
-    font-size:20px;
+.theWord {
+    font-size: 30px;
+    margin-bottom: 15px;
 }
 
 table {
@@ -93,14 +101,21 @@ table {
     margin: 0 auto;
 }
 
-th, td {
+th,
+td {
     text-align: left;
     padding: 8px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
 
 th {
-    background-color: #4CAF50;
+    background-color: #2e7aad;
     color: white;
+}
+
+input[type=text] {
+    margin: 8px 10px;
 }

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import SbCategory from './SbCategory';
 
 //This component contains the various categories a player can choose
 class Scoreboard extends Component {
@@ -17,7 +16,7 @@ class Scoreboard extends Component {
 
     componentDidMount() {
         axios
-            .get('/scores/scoreList')
+            .get('/scores/scoreList/all')
             .then(res => {
                 // console.log(res.data);
                 this.setState({
@@ -27,6 +26,24 @@ class Scoreboard extends Component {
                 });
                 // console.log(JSON.stringify(res.data));
             });
+    }
+
+
+      updateCat= (event)=> {
+        this.setState({currList:event.target.value}, ()=>{
+
+              axios
+            .get(`/scores/scoreList/${this.state.currList}`)
+            .then(res => {
+                console.log(res.data);
+                this.setState({
+                    scoreList: res.data
+                });
+            });
+
+        });
+          
+      
     }
 
     getPlace = (n) => {
@@ -43,13 +60,11 @@ class Scoreboard extends Component {
 
     render() {
         
-        if(this.state.currList == 'all'){
-
         return (
             <div>
                 <h1>Scoreboard</h1>
                 <span> Filter By </span>
-                <select value={this.state.currList} onChange={this.changeCat}>
+                <select value={this.state.currList} onChange={this.updateCat} className="categories">
                     <option value='all'>All</option>
                     <option value='sports'>Sports</option>
                     <option value='music'>Music</option>
@@ -60,7 +75,11 @@ class Scoreboard extends Component {
                         <tr>
                             <th>Place</th>
                             <th>Name</th>
-                            <th>Category</th>
+
+                            {
+                                this.state.currList == 'all' &&
+                                  <th>Category</th>
+                            }
                             <th>Score</th>
                         </tr>
                         {this
@@ -78,9 +97,12 @@ class Scoreboard extends Component {
                                         <td>
                                             {val.name}
                                         </td>
+                                    {
+                                         this.state.currList == 'all' &&
                                         <td>
                                             {val.category}
                                         </td>
+                                    }
                                         <td>
                                             {val.score}
                                         </td>
@@ -92,23 +114,6 @@ class Scoreboard extends Component {
 
             </div>
         );
-
-        }
-        else{
-            return (
-            <div>
-                 <select value={this.state.currList} onChange={this.changeCat}>
-                    <option value='all'>All</option>
-                    <option value='sports'>Sports</option>
-                    <option value='music'>Music</option>
-                </select>
-
-                <SbCategory cat={this.state.currList}></SbCategory>
-                
-            </div>
-            );
-                
-        }
 
     }
 }

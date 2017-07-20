@@ -4,7 +4,7 @@ const config = require('../config/config');
 
 
 
-router.get('/scoreList', (req, res) => {
+router.get('/scoreList/all', (req, res) => {
 
     let data = [];
     let q = 'SELECT * FROM highscores ORDER BY score DESC';
@@ -21,7 +21,7 @@ router.get('/scoreList', (req, res) => {
 });
 
 router.get('/scoreList/:category', (req, res) => {
-    console.log(req.params.category);
+    // console.log(req.params.category);
     // res.send('hello');
 
     let data = [];

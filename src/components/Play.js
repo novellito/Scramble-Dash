@@ -59,11 +59,6 @@ class Play extends Component {
 
   }
 
-  displayWord = () => {
-    let word = this.shuffleWords(this.props.currList[this.state.index])
-    return word;
-  }
-
   render() {
 
     return (

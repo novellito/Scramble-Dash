@@ -17,7 +17,7 @@ class Container extends Component {
       category:'sports',
       wordList: [],
       tick: false,
-      sec: 5,
+      sec: 50,
       gameState: true, //lock input
       reset: false
     }

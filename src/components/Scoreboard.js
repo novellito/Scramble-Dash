@@ -63,6 +63,7 @@ class Scoreboard extends Component {
                     <option value='all'>All</option>
                     <option value='sports'>Sports</option>
                     <option value='music'>Music</option>
+                    <option value='food'>Food</option>
                 </select>
 
                 <table>

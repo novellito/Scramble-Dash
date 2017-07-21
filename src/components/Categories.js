@@ -47,7 +47,7 @@ class Categories extends Component {
           disabled={this.props.gameState}>
           <option value='sports'>Sports</option>
           <option value='music'>Music</option>
-          <option value='videogames'>Video Games</option>
+          <option value='food'>Food</option>
         </select>
       </div>
     );

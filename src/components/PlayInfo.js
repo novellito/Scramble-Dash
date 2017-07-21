@@ -35,7 +35,7 @@ class PlayInfo extends Component {
     }
     
     if(!this.props.reset  && this.state.isTicking){ //reset the time 
-      this.state.secondsRemaining = 5;       
+      this.state.secondsRemaining = 50;       
       this.state.isTicking = false;
       clearInterval(this.interval);
     }

@@ -58,6 +58,7 @@ You will need to have **MySQL** set up on your computer in order to run up the a
 Next you will need to install the node modules using `npm install` through your command line.
 Once the modules are installed open two separate command line windows.
   On the first window run `cd backend` and then `node index.js`
+  
   On the other window simply run `npm start`
   
 If everything was set up correctly you should be able to play the app on `http://localhost:3000/`

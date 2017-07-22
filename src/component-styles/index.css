@@ -17,7 +17,8 @@ body {
 }
 
 .info {
-    background: #ffbd59;
+    background: #36479e;
+    color:white;
     position: relative;
     display: inline-block;
     border-radius: 2px;

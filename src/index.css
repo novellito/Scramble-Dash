@@ -4,3 +4,7 @@ body {
   font-family: sans-serif;
    background-color:rgb(198, 236, 245); 
 }
+
+.App {
+  text-align: center;
+}

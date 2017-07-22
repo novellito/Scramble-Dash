@@ -4,7 +4,7 @@ const categories = require('./routes/categories');
 const scores = require('./routes/scores');
 
 const app = express();
-app.use(express.static(path.join(__dirname, 'scramble-dash/build')));
+// app.use(express.static(path.join(__dirname, 'scramble-dash/build')));
 
 // Port Number
 const port = process.env.PORT || 5000;

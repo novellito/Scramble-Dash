@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../component-styles/submit.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -10,7 +9,6 @@ class Submit extends Component {
 
 submitScore = () => {
 
-  // this.props.userScore;
   if(this.refs.input.value != null){
     
     axios.post('/scores/newScore', {
@@ -20,7 +18,6 @@ submitScore = () => {
   }).then(function (response) {
     console.log(response);
   })
-  // console.log(this.refs.input.value);
 
   }
 }
@@ -29,10 +26,9 @@ submitScore = () => {
   render() {
     return (
       <div className="submitInfo">
-     <h2>Name:</h2>
-  <input ref="input" type="text" required/>
-<Link onClick={this.submitScore} className="button btn-hov" to="/scoreboard"><i className="fa fa-plus" aria-hidden="true"></i></Link>
-
+        <h2>Name:</h2>
+        <input ref="input" type="text" required/>
+        <Link onClick={this.submitScore} className="button btn-hov" to="/scoreboard"><i className="fa fa-plus" aria-hidden="true"></i></Link>
       </div>
     );
   }

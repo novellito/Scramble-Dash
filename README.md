@@ -53,7 +53,7 @@ my-app/
 
 If you want to go ahead and have fun with the application start by cloning the repository
 
-You will need to have **MySQL** set up on your computer in order to run up the app properly. Once you have that configured you will need to create a new database and then seed it using the provided .SQL file. Simply run the file and your database will be populated. AFter seeding the database navigate to /backend/config/config.js and enter the proper credentials for the database.
+You will need to have **MySQL** set up on your computer in order to run up the app properly. Once you have that configured you will need to create a new database and then seed it using the provided .SQL file. Simply run the file and your database will be populated. After seeding the database navigate to /backend/config/config.js and enter the proper credentials for the database.
 
 Next you will need to install the node modules using `npm install` through your command line.
 Once the modules are installed open two separate command line windows.

@@ -1,38 +1,33 @@
 .navbar {
-    background-color: #222;
-    /* padding: 20px; */
-    color: white;
-    
-    
+  background-color: #222;
+  color: white;
 }
 
 .selections {
-    display: flex;
-    list-style-type: none;
-    max-width: 500px;
-    margin: 0 auto;
-    padding:0;
+  display: flex;
+  list-style-type: none;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0;
 }
 
 li {
-    flex: 1;
-    text-align: center;
-    display: block;
+  flex: 1;
+  text-align: center;
+  display: block;
 }
 
-li:not(:first-child) {   
-      border-left: 2px solid #ecf0f1;
-    }
+li:not(:first-child) {
+  border-left: 2px solid #ecf0f1;
+}
 
 li a {
-    display: block;
-    padding: 20px; 
-    color: white;
-    background: #2980b9;
-    text-decoration: none;
+  display: block;
+  padding: 20px;
+  color: white;
+  background: #2980b9;
+  text-decoration: none;
 }
- li a:hover{
-     background: lightblue;
- }
-
- 
+li a:hover {
+  background: lightblue;
+}

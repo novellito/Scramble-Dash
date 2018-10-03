@@ -1,122 +1,122 @@
 html,
 body {
-    max-width: 100%;
-    overflow-x: hidden;
-    font-family: 'Open Sans', sans-serif;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .categories {
-    margin-bottom: 35px;
-    height: 25px;
-    border-radius: 10px;
-    outline: none;
+  margin-bottom: 35px;
+  height: 25px;
+  border-radius: 10px;
+  outline: none;
 }
 
 .outer {
-    position: relative;
+  position: relative;
 }
 
 .info {
-    background: #36479e;
-    color:white;
-    position: relative;
-    display: inline-block;
-    border-radius: 2px;
-    margin: 2px;
-    width: 100px;
-    font-size: 3.5em;
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+  background: #36479e;
+  color: white;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+  margin: 2px;
+  width: 100px;
+  font-size: 3.5em;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
 .fa-hourglass-start,
 .fa-star {
-    position: absolute;
-    top: 0;
-    margin: 0 50px;
-    margin-top: -20px;
+  position: absolute;
+  top: 0;
+  margin: 0 50px;
+  margin-top: -20px;
 }
 
-input[type=text] {
-    max-width: 300px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 3px solid #ccc;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: none;
-    font-size: 20px;
+input[type='text'] {
+  max-width: 300px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  font-size: 20px;
 }
 
-input[type=text]:focus {
-    border: 3px solid #555;
+input[type='text']:focus {
+  border: 3px solid #555;
 }
 
 .button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 14px 30px;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 4px;
-    cursor: pointer;
-    border-radius: 8px;
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 14px 30px;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 4px;
+  cursor: pointer;
+  border-radius: 8px;
 }
 
 .btn-hov:hover {
-    background-color: rgb(109, 204, 112);
+  background-color: rgb(109, 204, 112);
 }
 
 .btn-disabled {
-    background-color: rgb(154, 201, 156);
-    cursor: not-allowed;
+  background-color: rgb(154, 201, 156);
+  cursor: not-allowed;
 }
 
 .btn-replay {
-    background-color: #f44336;
+  background-color: #f44336;
 }
 
 .btn-replay:hover {
-    background-color: #f56a60;
+  background-color: #f56a60;
 }
 
 .submitInfo {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .submitInfo h2 {
-    display: inline-block;
-    margin-right: 5px;
+  display: inline-block;
+  margin-right: 5px;
 }
 
 .theWord {
-    font-size: 30px;
-    margin-bottom: 15px;
+  font-size: 30px;
+  margin-bottom: 15px;
 }
 
 table {
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 th,
 td {
-    text-align: left;
-    padding: 8px;
+  text-align: left;
+  padding: 8px;
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2
+  background-color: #f2f2f2;
 }
 
 th {
-    background-color: #2e7aad;
-    color: white;
+  background-color: #2e7aad;
+  color: white;
 }
 
-input[type=text] {
-    margin: 8px 10px;
+input[type='text'] {
+  margin: 8px 10px;
 }

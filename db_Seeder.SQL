@@ -1,3 +1,4 @@
+# DB seeder file
 CREATE TABLE sports(
     id INT AUTO_INCREMENT PRIMARY KEY,    
     word VARCHAR(100)
